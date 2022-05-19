@@ -1,31 +1,41 @@
-// alert(moment().format('MMMM Do YYYY, h:mm:ss a'))
-
+// creating daily calendar
 const containerEl = $(".container");
-let schedulelistEl = $("<div class ='calendar'>");
-containerEl.append(schedulelistEl);
 
-for (let i = 1; i <25; i++) {
-    let listEl = $("<h3>");
-    let inputEl = $("<input>")
-    let buttonEl = $("<button style='width:40px;height:40px'>")
+for (let i = 6; i <21; i++) {
+    let largelistEl = $("<h3>")
+    let listEl = $("<h2>");
+    let inputEl = $("<input style='width:400px;height:50x'>")
+    let buttonEl = $("<button class = 'button' style='width:40px;height:50px'>")
     buttonEl.text('💾');
     if (i < 12) {
         listEl.text(i + "AM");
+        listEl.attr('class',i + ' time');
     } else if (i === 12) {
         listEl.text(i + "PM");
+        listEl.attr('class',i + ' time');
     } else if (i === 24) {
         listEl.text('12AM')
+        listEl.attr('class',i + ' time');
     }
     else {
         let time = i;
         listEl.text((time -12) + "PM");
+        listEl.attr('class',i + ' time');
     }
-    listEl.append(inputEl)
+    largelistEl.append(listEl)
+    .append(inputEl)
     .append(buttonEl);
-    schedulelistEl.append(listEl);
+    containerEl.append(largelistEl);
 }
 
-schedulelistEl.children().css('font-size','x-large');
-schedulelistEl.children().css('display','flex');
-// schedulelistEl.css('display','flex');
-schedulelistEl.children().css('justify-content','center');
+containerEl.children().children().css('font-size','large');
+containerEl.children().children('.time').css('padding','15px 30px 0px');
+containerEl.children().children('.time').css('min-width','110px');
+containerEl.children().css('display','flex');
+containerEl.children().css('justify-content','center');
+containerEl.children().css('margin','0px');
+
+// color code time blocks
+const currentTime = moment().hour();
+const timematch = currentTime === 52;
+alert(timematch);
