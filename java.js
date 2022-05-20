@@ -4,10 +4,10 @@ const currentTime = moment().hour();
 
 for (let i = 6; i < 25; i++) {
     let largelistEl = $("<h3>")
+        .attr('data-time', i - 6)
     let listEl = $("<h2 class='time'>");
-    let inputEl = $("<form><input style='width:400px'/></form>")
-    let buttonEl = $("<button class = 'button' style='width:40px;height:50px'>")
-    buttonEl.text('💾');
+    let inputEl = $("<form><input id ='myInput' style='width:400px' value ='to do here' /></form>")
+    let buttonEl = $("<button type='submit' class = 'button' style='width:40px;height:50px'>💾</button>")
     if (i < 12) {
         listEl.text(i + "AM");
         if (currentTime > i) {
@@ -59,22 +59,55 @@ containerEl.children().children('.time').css('min-width', '110px');
 containerEl.children().css('display', 'flex');
 containerEl.children().css('justify-content', 'center');
 containerEl.children().css('margin', '0px');
-$('input').css('line-height','44px');
+$('input').css('line-height', '44px');
 
 // color code time blocks
 const hourAttribute = containerEl.children().children('.time');
 const inputAttribute = $('input');
-for (let i=0; i < hourAttribute.length; i++) {
+for (let i = 0; i < hourAttribute.length; i++) {
     if (hourAttribute.eq(i).attr('data-color') === 'red') {
-        inputAttribute.eq(i).css('background-color','red');
+        inputAttribute.eq(i).css('background-color', '#e6274d');
     } else if (hourAttribute.eq(i).attr('data-color') === 'green') {
-        inputAttribute.eq(i).css('background-color','green');
+        inputAttribute.eq(i).css('background-color', '#40b329');
     } else if (hourAttribute.eq(i).attr('data-color') === 'gray') {
-        inputAttribute.eq(i).css('background-color','gray');
+        inputAttribute.eq(i).css('background-color', 'gray');
     }
 };
 
-$("form").submit( function(event) {
+const savedElement = {};
+
+const saveTheElement = function (event) {
+    
     event.preventDefault();
-    alert('i submit');
-})
+    let x = $(event.target).parent().attr('data-time');
+    savedElement[x] = $('.container').children().eq(x).children().eq(1).children().val();
+    localStorage.setItem('savedElements', JSON.stringify(savedElement));
+}
+ 
+const lastInput = JSON.parse(localStorage.getItem("savedElements"));
+console.log(Object.keys(lastInput)[0]);
+
+    // $('input').text(lastInput[x])
+    // if (lastInput !== null) {
+    //     
+    // } else {
+    //     return;
+    // }
+
+
+
+// $(".button").click(saveTheElement);
+$(".button").click(function (event) {
+    saveTheElement(event);
+    // renderTheElement(event);
+    // console.log(savedElement);
+});
+
+
+
+
+//     function(event) {
+//     event.preventDefault();
+//     localStorage.setItem('savedElement', )
+//     alert('i submit');
+// });
