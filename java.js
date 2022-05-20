@@ -2,9 +2,9 @@
 const containerEl = $(".container");
 const currentTime = moment().hour();
 
-for (let i = 6; i < 25; i++) {
+for (let i = 6; i < 25; i++) { // start time
     let largelistEl = $("<h3>")
-        .attr('data-time', i - 6)
+        .attr('data-time', i - 6) // change the difference depending on start time (what is i set to initially)
     let listEl = $("<h2 class='time'>");
     let inputEl = $("<form><input id ='myInput' style='width:400px' value ='' /></form>")
     let buttonEl = $("<button type='submit' class = 'button' style='width:40px;height:50px'>💾</button>")
@@ -52,15 +52,6 @@ for (let i = 6; i < 25; i++) {
         .append(buttonEl);
     containerEl.append(largelistEl);
 }
-
-containerEl.children().children().css('font-size', 'large');
-containerEl.children().children('.time').css('padding', '15px 30px 0px');
-containerEl.children().children('.time').css('min-width', '110px');
-containerEl.children().css('display', 'flex');
-containerEl.children().css('justify-content', 'center');
-containerEl.children().css('margin', '0px');
-$('input').css('line-height', '44px');
-
 // color code time blocks
 const hourAttribute = containerEl.children().children('.time');
 const inputAttribute = $('input');
@@ -73,18 +64,16 @@ for (let i = 0; i < hourAttribute.length; i++) {
         inputAttribute.eq(i).css('background-color', 'gray');
     }
 };
-
+// create empty Object, this is place to save inputs from user
 const savedElement = {};
-
+// function that saves inputs on local storage
 const saveTheElement = function (event) {
     event.preventDefault();
     let x = $(event.target).parent().attr('data-time');
     savedElement[x] = $('.container').children().eq(x).children().eq(1).children().val();
     localStorage.setItem('savedElements', JSON.stringify(savedElement));
-
-
 }
-
+//renders and keeps text when page is refreshed 
 const lastInput = JSON.parse(localStorage.getItem("savedElements"));
 if (lastInput !== null) {
     for (let i = 0; i < Object.keys(lastInput).length; i++) {
@@ -93,7 +82,15 @@ if (lastInput !== null) {
         $('.container').children().eq(y).children().eq(1).children().val(lastInput[y]);
     }
 }
-
+//on click event to save the text to local storage 
 $(".button").click(function (event) {
     saveTheElement(event);
 });
+// tried to make schedule box look organized and pretty
+containerEl.children().children().css('font-size', 'large');
+containerEl.children().children('.time').css('padding', '15px 30px 0px');
+containerEl.children().children('.time').css('min-width', '110px');
+containerEl.children().css('display', 'flex');
+containerEl.children().css('justify-content', 'center');
+containerEl.children().css('margin', '0px');
+$('input').css('line-height', '44px');
