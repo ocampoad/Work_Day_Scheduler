@@ -6,7 +6,7 @@ for (let i = 6; i < 25; i++) {
     let largelistEl = $("<h3>")
         .attr('data-time', i - 6)
     let listEl = $("<h2 class='time'>");
-    let inputEl = $("<form><input id ='myInput' style='width:400px' value ='to do here' /></form>")
+    let inputEl = $("<form><input id ='myInput' style='width:400px' value ='' /></form>")
     let buttonEl = $("<button type='submit' class = 'button' style='width:40px;height:50px'>💾</button>")
     if (i < 12) {
         listEl.text(i + "AM");
@@ -77,37 +77,21 @@ for (let i = 0; i < hourAttribute.length; i++) {
 const savedElement = {};
 
 const saveTheElement = function (event) {
-    
     event.preventDefault();
     let x = $(event.target).parent().attr('data-time');
     savedElement[x] = $('.container').children().eq(x).children().eq(1).children().val();
     localStorage.setItem('savedElements', JSON.stringify(savedElement));
 }
- 
+
 const lastInput = JSON.parse(localStorage.getItem("savedElements"));
-console.log(Object.keys(lastInput)[0]);
+if (lastInput !== null) {
+    for (let i = 0; i < Object.keys(lastInput).length; i++) {
+        console.log(Object.keys(lastInput)[i]);
+        console.log(lastInput[i]);
+        $('.container').children().eq(i).children().eq(1).children().val(lastInput[i]);
+    }
+} 
 
-    // $('input').text(lastInput[x])
-    // if (lastInput !== null) {
-    //     
-    // } else {
-    //     return;
-    // }
-
-
-
-// $(".button").click(saveTheElement);
 $(".button").click(function (event) {
     saveTheElement(event);
-    // renderTheElement(event);
-    // console.log(savedElement);
 });
-
-
-
-
-//     function(event) {
-//     event.preventDefault();
-//     localStorage.setItem('savedElement', )
-//     alert('i submit');
-// });
