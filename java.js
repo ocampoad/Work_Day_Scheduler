@@ -81,16 +81,18 @@ const saveTheElement = function (event) {
     let x = $(event.target).parent().attr('data-time');
     savedElement[x] = $('.container').children().eq(x).children().eq(1).children().val();
     localStorage.setItem('savedElements', JSON.stringify(savedElement));
+
+
 }
 
 const lastInput = JSON.parse(localStorage.getItem("savedElements"));
 if (lastInput !== null) {
     for (let i = 0; i < Object.keys(lastInput).length; i++) {
-        console.log(Object.keys(lastInput)[i]);
-        console.log(lastInput[i]);
-        $('.container').children().eq(i).children().eq(1).children().val(lastInput[i]);
+        let y = Object.keys(lastInput)[i]
+        console.log(y);
+        $('.container').children().eq(y).children().eq(1).children().val(lastInput[y]);
     }
-} 
+}
 
 $(".button").click(function (event) {
     saveTheElement(event);
