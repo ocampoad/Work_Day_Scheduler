@@ -1,6 +1,10 @@
 // creating daily calendar
 const containerEl = $(".container");
 const currentTime = moment().hour();
+const currentDate = moment().format("dddd, MMM Do");  
+
+//setting current day and date
+$('#currentDay').text(currentDate);
 
 for (let i = 6; i < 25; i++) { // start time
     let largelistEl = $("<h3>")
@@ -8,7 +12,7 @@ for (let i = 6; i < 25; i++) { // start time
     let listEl = $("<h2 class='time'>");
     let inputEl = $("<form><input id ='myInput' style='width:400px' value ='' /></form>")
     let buttonEl = $("<button type='submit' class = 'button' style='width:40px;height:50px'>💾</button>")
-    if (i < 12) {
+    if (i < 12) { // time blocks for pm
         listEl.text(i + "AM");
         if (currentTime > i) {
             listEl.attr('data-color', 'gray');
@@ -17,7 +21,7 @@ for (let i = 6; i < 25; i++) { // start time
         } else if (currentTime < i) {
             listEl.attr('data-color', 'green');
         }
-    } else if (i === 12) {
+    } else if (i === 12) { // time block at 12 pm noon
         listEl.text(i + "PM");
         if (currentTime > i) {
             listEl.attr('data-color', 'gray');
@@ -26,7 +30,7 @@ for (let i = 6; i < 25; i++) { // start time
         } else if (currentTime < i) {
             listEl.attr('data-color', 'green');
         }
-    } else if (i === 24) {
+    } else if (i === 24) { // time block at 12 am midnight
         listEl.text('12AM');
         if (currentTime > i) {
             listEl.attr('data-color', 'gray');
@@ -37,7 +41,7 @@ for (let i = 6; i < 25; i++) { // start time
         }
     }
     else {
-        let time = i;
+        let time = i; // time blocks for pm
         listEl.text((time - 12) + "PM");
         if (currentTime > i) {
             listEl.attr('data-color', 'gray');
@@ -47,6 +51,12 @@ for (let i = 6; i < 25; i++) { // start time
             listEl.attr('data-color', 'green');
         }
     }
+    // making and appending a set of elements 
+    // <h3>
+    //      <h2>
+    //      <form>
+    //              <input>
+    //      <button>
     largelistEl.append(listEl)
         .append(inputEl)
         .append(buttonEl);
