@@ -55,61 +55,36 @@ THEN the saved events persist
 ​
 ### Links
 ​
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [Workday Scheduler](https://ocampoad.github.io/Work_Day_Scheduler/)
 ​
 ## My process
 ​
 ### Built with
 ​
-- Semantic HTML5 markup
-- CSS
-​
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+- Moment.js
+- Javascript
+- Jquery
 ​
 ### What I learned
 ​
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
-​
-To see how you can add code snippets, see below:
-​
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-​
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-​
-If you want more help with writing markdown, check out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-​
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+I learned how to use third party API' such as Moment.js and Jquery. With the help of the documentation, I was able to implement current date and time to the application. In addition, I also learned how to target html elements, class, and css attributes using Jquery. I learned how to store data in local storage on the browser. 
 ​
 ### Continued development
 ​
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-​
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+I would like to learn more about 
+```
+event.target
+``` 
+and traversing through parent and child elements more efficiently. I was able to scratch the surface on how to use event.targer but would like to learn more about it. I will also use the methods I learned using third party API's and apply it to other API's
 ​
 ### Useful resources
 ​
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-​
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+- [Moment.js](https://momentjs.com/) - Their documentation helped me obtain current time and date
+- [Jquery](https://jquery.com/) - I was able to learn how to use jquery using their documentation
+- [W3schools](https://www.w3schools.com/js/default.asp) - Their easy to use website was helpful showing examples for each new chapters
+- [Stackoverflow](https://stackoverflow.com/) - Helpful for more specific question regarding a technique I could not find at other websites
 ​
 ## Author
 ​
-- Website - [Add your name here](https://www.your-site.com)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
+- Website - [Adriane Ocampo](https://ocampoad.github.io/Adriane_Ocampo_Portfolio/)
 ​
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-​
-## Acknowledgments
-​
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-​
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
-Collap
