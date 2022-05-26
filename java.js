@@ -1,7 +1,7 @@
 // creating daily calendar
 const containerEl = $(".container");
 const currentTime = moment().hour();
-const currentDate = moment().format("dddd, MMM Do");  
+const currentDate = moment().format("dddd, MMM Do");
 
 //setting current day and date
 $('#currentDay').text(currentDate);
@@ -74,24 +74,30 @@ for (let i = 0; i < hourAttribute.length; i++) {
         inputAttribute.eq(i).css('background-color', 'gray');
     }
 };
-// create empty Object, this is place to save inputs from user
-const savedElement = {};
+
+const lastInput = JSON.parse(localStorage.getItem("savedElements"));
+let savedElement = {};
 // function that saves inputs on local storage
 const saveTheElement = function (event) {
     event.preventDefault();
     let x = $(event.target).parent().attr('data-time');
-    savedElement[x] = $('.container').children().eq(x).children().eq(1).children().val();
-    localStorage.setItem('savedElements', JSON.stringify(savedElement));
-}
-//renders and keeps text when page is refreshed 
-const lastInput = JSON.parse(localStorage.getItem("savedElements"));
-if (lastInput !== null) {
-    for (let i = 0; i < Object.keys(lastInput).length; i++) {
-        let y = Object.keys(lastInput)[i]
-        console.log(y);
-        $('.container').children().eq(y).children().eq(1).children().val(lastInput[y]);
+    if (lastInput !== null) {
+        savedElement = lastInput;
+        savedElement[x] = $('.container').children().eq(x).children().eq(1).children().val();
+        localStorage.setItem('savedElements', JSON.stringify(savedElement));
+        console.log('why')
+    } else {
+        savedElement[x] = $('.container').children().eq(x).children().eq(1).children().val();
+        localStorage.setItem('savedElements', JSON.stringify(savedElement));
     }
 }
+//renders and keeps text when page is refreshed 
+for (let i = 0; i < Object.keys(lastInput).length; i++) {
+    let y = Object.keys(lastInput)[i]
+    console.log(y);
+    $('.container').children().eq(y).children().eq(1).children().val(lastInput[y]);
+}
+
 //on click event to save the text to local storage 
 $(".button").click(function (event) {
     saveTheElement(event);
