@@ -1,7 +1,7 @@
 // creating daily calendar
 const containerEl = $(".container");
 const currentTime = moment().hour();
-const currentDate = moment().format("dddd, MMM Do");
+const currentDate = moment().format("dddd, MMM Do");  
 
 //setting current day and date
 $('#currentDay').text(currentDate);
@@ -92,12 +92,13 @@ const saveTheElement = function (event) {
     }
 }
 //renders and keeps text when page is refreshed 
-for (let i = 0; i < Object.keys(lastInput).length; i++) {
-    let y = Object.keys(lastInput)[i]
-    console.log(y);
-    $('.container').children().eq(y).children().eq(1).children().val(lastInput[y]);
+if (lastInput !== null) {
+    for (let i = 0; i < Object.keys(lastInput).length; i++) {
+        let y = Object.keys(lastInput)[i]
+        console.log(y);
+        $('.container').children().eq(y).children().eq(1).children().val(lastInput[y]);
+    }
 }
-
 //on click event to save the text to local storage 
 $(".button").click(function (event) {
     saveTheElement(event);
